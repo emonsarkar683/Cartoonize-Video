@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video to Cartoon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+        }
+        h1, h2 {
+            text-align: center;
+            color: #333;
+        }
+        .upload-section {
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e9f7ef;
+            margin-bottom: 20px;
+        }
+        .upload-section input, select {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+        .upload-section button {
+            padding: 10px 20px;
+            background: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .upload-section button:hover {
+            background: #218838;
+        }
+        .progress-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        #progress-bar {
+            width: 80%;
+            height: 20px;
+            border-radius: 10px;
+            background-color: #e0e0e0;
+        }
+        #progress-text {
+            margin-left: 15px;
+            font-weight: 500;
+        }
+        .video-section {
+            text-align: center;
+        }
+        video {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .history-section {
+            padding: 10px 0;
+        }
+        .video-history {
+            margin-bottom: 20px;
+        }
+        .video-history h4 {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Convert Your Video to a Cartoon</h1>
+
+        <div class="upload-section">
+            <label for="videoFile"><i class="fas fa-video"></i> Select a Video File:</label><br>
+            <input type="file" id="videoFile"><br>
+
+            <label for="styleSelect"><i class="fas fa-paint-brush"></i> Choose a Style:</label><br>
+            <select id="styleSelect">
+                <option value="cartoon">Cartoon</option>
+                <option value="pencil">Pencil Sketch</option>
+                <option value="watercolor">Watercolor</option>
+            </select><br><br>
+
+            <button onclick="uploadVideo()"><i class="fas fa-upload"></i> Upload and Convert</button>
+        </div>
+
+        <div class="progress-section">
+            <progress id="progress-bar" value="0" max="100"></progress>
+            <p id="progress-text">Upload Progress: 0%</p>
+        </div>
+
+        <div class="video-section">
+            <h2>Converted Video:</h2>
+            <video id="cartoon-video" controls></video>
+        </div>
+
+        <div class="history-section">
+            <h2>Your Upload History</h2>
+            <div id="history-container"></div>
+        </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+
+    <script src="app.js"></script>
+</body>
+</html>
